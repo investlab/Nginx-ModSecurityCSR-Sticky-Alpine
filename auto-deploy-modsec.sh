@@ -97,6 +97,9 @@ services:
      image: "hub.saobang.vn/nexttech/nginx-modsecurity-crs:1.21.4RC1-nginx-alpine"
      volumes:
        - "/data/nginx/conf.d:/etc/nginx/conf.d"
+       - "/data/nginx/nginx.conf:/etc/nginx/nginx.conf"
+       - "/data/nginx/proxy.conf:/etc/nginx/proxy.conf"
+       - "/data/nginx/general.conf:/etc/nginx/general.conf"
        - "/data/nginx/log:/var/log/nginx"
        - "/data/modsec/log:/var/log/modsec"
      restart: "always"
