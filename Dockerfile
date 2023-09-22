@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-LABEL maintainer="ThaoPT <thaopt@peacesoft.net>"
+LABEL maintainer="ThaoPT <thaopt@nextsec.vn>"
 
 RUN apk add --no-cache --virtual .build-deps \
         gcc \
@@ -91,18 +91,18 @@ COPY conf/modsec/ /etc/nginx/modsec/
 COPY conf/owasp/ /usr/local/owasp-modsecurity-crs/
 COPY errors /usr/share/nginx/errors
 ADD  ./conf/nginx/general.conf	/etc/nginx/
-ADD	 ./conf/nginx/proxy.conf	/etc/nginx/
+ADD  ./conf/nginx/proxy.conf	/etc/nginx/
 
 # Edit link de download
 # https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=YOUR_LICENSE_KEY&suffix=tar.gz
 # https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=YOUR_LICENSE_KEY&suffix=tar.gz
 # https://forum.matomo.org/t/maxmind-is-changing-access-to-free-geolite2-databases/35439/3
 
+COPY ./GeoLite2-City.tar.gz /tmp/
+COPY ./GeoLite2-Country.tar.gz /tmp/
 RUN mkdir -p /etc/nginx/geoip && \
-    wget https://gitlab.saobang.vn/thaopt/public-data-for-deployment/-/raw/master/GeoLite2-City.tar.gz && \
-    wget https://gitlab.saobang.vn/thaopt/public-data-for-deployment/-/raw/master/GeoLite2-Country.tar.gz && \
-    tar -xvzf GeoLite2-City.tar.gz --strip-components=1 && \
-    tar -xvzf GeoLite2-Country.tar.gz --strip-components=1 && \
+    tar -xvzf /tmp/GeoLite2-City.tar.gz --strip-components=1 && \
+    tar -xvzf /tmp/GeoLite2-Country.tar.gz --strip-components=1 && \
     mv *.mmdb /etc/nginx/geoip/
 
 RUN chown -R nginx:nginx /usr/share/nginx /etc/nginx
@@ -112,6 +112,7 @@ RUN apk del .build-deps && \
     apk del .libmodsecurity-deps && \
     rm -fr ModSecurity && \
     rm -fr ModSecurity-nginx && \
+    rm -fr /tmp/GeoLite2* && \
     rm -fr GeoIp && \
     rm -fr nginx-$NGINX_VERSION.tar.gz && \
     rm -fr nginx-$NGINX_VERSION && \
