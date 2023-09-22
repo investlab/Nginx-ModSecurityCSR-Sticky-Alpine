@@ -94,7 +94,7 @@ version: '3'
 
 services:
    modsec:
-     image: "hub.saobang.vn/nexttech/nginx-modsecurity-crs:1.21.4RC1-nginx-alpine"
+     image: "wisoez/nginx-modsecurity-sticky"
      volumes:
        - "/data/nginx/conf.d:/etc/nginx/conf.d"
        - "/data/nginx/nginx.conf:/etc/nginx/nginx.conf"
