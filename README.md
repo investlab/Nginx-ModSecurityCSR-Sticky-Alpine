@@ -11,8 +11,10 @@ ModSecurity v3, OWASP Core rule set and more cutumize features from NextSec.vn
 - conf/owasp contains our owasp core rule set config
 
 ## How to Run?
+```
 cd nginx-modsec-csr
 sh auto-deploy-modsec.sh
+```
   
 ## Dockerhub:
 Link : https://github.com/investlab/Nginx-sticky-ThaoPT
