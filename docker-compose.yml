@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+   modsec:
+     image: "hub.saobang.vn/nexttech/nginx-modsecurity-crs:1.21.4RC1-nginx-alpine"
+     volumes:
+       - "/data/nginx/conf.d:/etc/nginx/conf.d"
+       - "/data/nginx/log:/var/log/nginx"
+       - "/data/modsec/log:/var/log/modsec"
+     restart: "always"
+     ports:
+       - "80:80"
+       - "443:443"
+

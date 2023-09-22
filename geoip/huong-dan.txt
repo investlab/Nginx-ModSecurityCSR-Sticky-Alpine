@@ -1,0 +1,3 @@
+#Download db Geoip tai:
+https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=Cc2BD53vYXIbYZBQ&suffix=tar.gz
+https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=Cc2BD53vYXIbYZBQ&suffix=tar.gz
