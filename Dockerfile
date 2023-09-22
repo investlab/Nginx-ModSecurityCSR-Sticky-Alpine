@@ -57,7 +57,8 @@ RUN echo 'Installing ModSec - Nginx connector' && \
 
 # https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/issues/33/cannot-compile-with-nginx-1134-and-module
 RUN echo 'Installing Sticky - Nginx session' && \
-    git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+    #git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+    git clone https://github.com/Refinitiv/nginx-sticky-module-ng.git
 
 
 WORKDIR /opt/GeoIP
