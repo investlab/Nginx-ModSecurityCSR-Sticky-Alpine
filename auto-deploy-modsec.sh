@@ -46,20 +46,20 @@ server {
 
 
 server {
-#       listen 443 ssl;  # khi enable dùng cert
-		listen 8080;	 # khi khong dung cert;
+       listen 443 ssl;  # khi enable dùng cert
+#	listen 8080;	 # khi khong dung cert;
         server_name     sub.domain.com;
 
         access_log      /var/log/nginx/sub.domain.com_access.log main;
         error_log       /var/log/nginx/sub.domain.com_error.log;
 
         sub_filter http://sub.domain.com https://sub.domain.com;
-		sub_filter http://www.domain.com https://www.domain.com;
+	sub_filter http://www.domain.com https://www.domain.com;
         sub_filter_once off;
         include /etc/nginx/general.conf;
 
-#    	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
-#	    ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
+    	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
+	ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
 
         #Reverse proxy
         location / {
@@ -67,8 +67,8 @@ server {
              include /etc/nginx/proxy.conf;
              }
 		#Browser cache
-		location ~*  \.(jpg|jpeg|png|gif|ico|css|js|pdf)$ {
-             proxy_pass       http://10.0.0.8:8080;
+	location ~*  \.(jpg|jpeg|png|gif|ico|css|js|pdf)$ {
+             proxy_pass       http://clusterapp;
              include /etc/nginx/proxy.conf;
              expires 30d;
         }
@@ -82,7 +82,7 @@ cat > /data/nginx/conf.d/restrictdomain.conf << EOL
 server {
     listen 80;
     server_name _;
-    return       301 http://nexttech.asia;
+    return       301 https://nextsec.vn;
 }
 
 EOL
