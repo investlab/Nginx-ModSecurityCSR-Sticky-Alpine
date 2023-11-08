@@ -94,7 +94,7 @@ version: '3'
 
 services:
    modsec:
-     image: "wisoez/nginx-modsecurity-sticky"
+     image: "wisoez/nginx-sticky-alpine"
      volumes:
        - "/data/nginx/conf.d:/etc/nginx/conf.d"
        - "/data/nginx/nginx.conf:/etc/nginx/nginx.conf"
