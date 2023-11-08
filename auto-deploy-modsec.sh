@@ -94,7 +94,8 @@ version: '3'
 
 services:
    modsec:
-     image: "wisoez/nginx-sticky-alpine:v1.25.0"
+     # v1.25.0 some error   
+     image: "wisoez/nginx-sticky-alpine:v1.19.0-sticky-modsec"
      volumes:
        - "/data/nginx/conf.d:/etc/nginx/conf.d"
        - "/data/nginx/nginx.conf:/etc/nginx/nginx.conf"
