@@ -46,8 +46,8 @@ server {
 
 
 server {
-       listen 443 ssl;  # khi enable dùng cert
-#	listen 8080;	 # khi khong dung cert;
+#       listen 443 ssl;  # khi enable dùng cert
+	listen 8080;	 # khi khong dung cert;
         server_name     sub.domain.com;
 
         access_log      /var/log/nginx/sub.domain.com_access.log main;
@@ -58,8 +58,8 @@ server {
         sub_filter_once off;
         include /etc/nginx/general.conf;
 
-    	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
-	ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
+ #   	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
+ #	ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
 
         #Reverse proxy
         location / {
